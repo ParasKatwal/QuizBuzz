@@ -1,0 +1,151 @@
+// COLOR
+$red: #fe6c6c;
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    height: auto;
+}
+html {
+    font-size: 14px;
+}
+.custom-container {
+    width: 90%;
+    margin: 0 auto;
+}
+button,
+a {
+    transition: 0.5s ease;
+}
+
+// NAV
+header {
+    nav {
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .logo {
+            height: 50px;
+            width: 200px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+        .nav__menu {
+            button {
+                background: $red;
+                color: #ffffff;
+                border-radius: 15px;
+                border: 1px solid $red;
+            }
+            button:first-child {
+                margin-right: 20px;
+            }
+            button:hover,
+            button:focus {
+                background: #ffffff;
+                color: $red;
+                border: 1px solid $red;
+            }
+        }
+    }
+}
+.log__wrapper {
+    height: auto;
+    width: auto;
+    padding: 1rem 3rem;
+    text-align: center;
+    h1 {
+        margin-bottom: 1.2rem;
+        color: $red;
+        font-size: 2.5rem;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .ant-input {
+            font-size: 1rem;
+            height: auto;
+            padding: 10px;
+        }
+        .ant-input-password {
+            padding: 0 10px 0 0;
+        }
+        button {
+            background: $red;
+            color: white;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            padding: 8px 40px;
+            border-radius: 5px;
+            height: auto;
+            border: none;
+        }
+    }
+}
+
+// HOME
+.home {
+    margin-top: 50px;
+    &__svg-wrapper {
+        width: 100%;
+        height: 200px;
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .caption {
+        margin-top: 20px;
+        p {
+            text-align: center;
+            font-size: 30px;
+            color: #3f3d56;
+            font-weight: 500;
+            span {
+                color: $red;
+            }
+        }
+    }
+    .playnow {
+        text-align: center;
+        padding-top: 20px;
+        a {
+            color: $red;
+            border: 1px solid $red;
+            font-size: 30px;
+            padding: 15px 60px;
+            border-radius: 60px;
+        }
+        a:hover {
+            background: $red;
+            color: #ffffff;
+        }
+    }
+}
+
+// ERROR
+.error {
+    text-align: center;
+    margin-top: 150px;
+    h1 {
+        color: $red;
+        font-size: 50px;
+    }
+    a {
+        border: 1px solid $red;
+        color: $red;
+        padding: 15px 40px;
+        font-size: 20px;
+    }
+}
