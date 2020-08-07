@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+// COMPONENTS
+import NotifyLog from "../components/NotifyLog";
+// CONTEXT
+import { DataContext } from "../Context";
 
 function Home() {
+    const { isLoggedIn } = useContext(DataContext);
+    const [log, setLog] = isLoggedIn;
+
     return (
         <div className="home">
             <div className="custom-container">
@@ -328,9 +335,7 @@ function Home() {
                     </p>
                 </div>
                 <div className="playnow">
-                    <Link href="Home" to={"/"}>
-                        Play Now
-                    </Link>
+                    {log ? <Link to={"/quizz"}>Play Now</Link> : <NotifyLog />}
                 </div>
             </div>
         </div>

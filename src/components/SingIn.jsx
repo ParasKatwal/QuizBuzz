@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Modal, Button, Form, Input } from "antd";
-
 import { Link } from "react-router-dom";
-// COMPONENTS
+// CONTEXT
+import { DataContext } from "../Context";
 
 export default function Signin() {
+    const { isLoggedIn, accounts, activeAcc } = useContext(DataContext);
+    const [log, setLog] = isLoggedIn;
+    const [users, setUsers] = accounts;
+    const [acc, setAcc] = activeAcc;
+
     const [modalVisible, setModalVisible] = useState(false);
 
     const handleModalVisible = (modalVisible) => {
@@ -12,15 +17,14 @@ export default function Signin() {
     };
 
     const onFinish = (values) => {
-        console.log("Success:", values);
+        setUsers([...users, values]);
+        setAcc(values);
+        setLog(true);
+        setModalVisible(false);
     };
 
     const onFinishFailed = (errorInfo) => {
         console.log("Failed:", errorInfo);
-    };
-
-    const forgotpassword = () => {
-        setModalVisible(false);
     };
 
     return (
