@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
 // IMAGES
@@ -26,13 +26,14 @@ function Nav() {
                     {log ? (
                         <div className="user-wrap">
                             <h3>{acc.username}</h3>
-                            <Button
+                            <Link
+                                to={"/"}
                                 onClick={() => {
                                     setLog(false);
                                 }}
                             >
                                 log Out
-                            </Button>
+                            </Link>
                         </div>
                     ) : (
                         <div className="nav__menu">

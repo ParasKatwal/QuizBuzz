@@ -7,6 +7,7 @@ import Nav from "./components/Nav";
 // PAGES
 import Home from "./pages/Home";
 import Quizz from "./pages/Quizz";
+import LeaderBoard from "./pages/LeaderBoard";
 import Error from "./pages/Error";
 // SASS
 import "./style/common.scss";
@@ -21,6 +22,7 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/quizz" component={Quizz} />
+                    <Route exact path="/leaderboard" component={LeaderBoard} />
                     <Route exact component={Error} />
                 </Switch>
             </DataProvider>

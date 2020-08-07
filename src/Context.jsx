@@ -6,6 +6,8 @@ export const DataProvider = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState();
     const [accounts, setAccounts] = useState([]);
     const [activeAcc, setActiveAcc] = useState([]);
+    const [allScore, setAllScore] = useState([]);
+    const [score, setScore] = useState(0);
     useEffect(() => {
         const accountsData = localStorage.getItem("users");
         if (accountsData) {
@@ -14,6 +16,14 @@ export const DataProvider = (props) => {
         const activeData = localStorage.getItem("activeUser");
         if (activeData) {
             setActiveAcc(JSON.parse(activeData));
+        }
+        const allScoreData = localStorage.getItem("allScore");
+        if (allScoreData) {
+            setAllScore(JSON.parse(allScoreData));
+        }
+        const scoreData = localStorage.getItem("score");
+        if (scoreData) {
+            setScore(JSON.parse(scoreData));
         }
         const status = localStorage.getItem("status");
         if (status) {
@@ -32,6 +42,8 @@ export const DataProvider = (props) => {
     useEffect(() => {
         localStorage.setItem("users", JSON.stringify(accounts));
         localStorage.setItem("activeUser", JSON.stringify(activeAcc));
+        localStorage.setItem("allScore", JSON.stringify(allScore));
+        localStorage.setItem("score", JSON.stringify(score));
     });
 
     return (
@@ -40,6 +52,8 @@ export const DataProvider = (props) => {
                 isLoggedIn: [isLoggedIn, setIsLoggedIn],
                 accounts: [accounts, setAccounts],
                 activeAcc: [activeAcc, setActiveAcc],
+                allScore: [allScore, setAllScore],
+                score: [score, setScore],
             }}
         >
             {props.children}
