@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Modal, Button, Form, Input } from "antd";
+// CONTEXT
+import { DataContext } from "../Context";
 
 export default function Signin() {
+    const { isLoggedIn, accounts, activeAcc } = useContext(DataContext);
+    const [log, setLog] = isLoggedIn;
+    const [users, setUsers] = accounts;
+    const [acc, setAcc] = activeAcc;
+
     const [modalVisible, setModalVisible] = useState(false);
 
     const handleModalVisible = (modalVisible) => {
@@ -9,7 +16,10 @@ export default function Signin() {
     };
 
     const onFinish = (values) => {
-        console.log("Success:", values);
+        setUsers([...users, values]);
+        setAcc(values);
+        setLog(true);
+        setModalVisible(false);
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -39,7 +49,7 @@ export default function Signin() {
                             onFinishFailed={onFinishFailed}
                         >
                             <Form.Item
-                                name="name"
+                                name="username"
                                 rules={[
                                     {
                                         required: true,

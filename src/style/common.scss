@@ -72,6 +72,26 @@ header {
         }
     }
 }
+@media (max-width: 500px) {
+    header {
+        nav {
+            .nav__menu {
+                display: flex;
+                flex-direction: column;
+                button {
+                    margin-bottom: 10px;
+                    width: 100%;
+                }
+            }
+        }
+        .user-wrap {
+            flex-direction: column;
+            h3 {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
 .log__wrapper {
     height: auto;
     width: auto;
@@ -106,9 +126,9 @@ header {
         }
     }
 }
-
 // HOME
 .home {
+    padding-bottom: 20px;
     margin-top: 50px;
     &__svg-wrapper {
         width: 100%;
@@ -166,6 +186,7 @@ header {
 
 // ERROR
 .error {
+    padding-bottom: 20px;
     text-align: center;
     margin-top: 150px;
     h1 {
@@ -182,6 +203,7 @@ header {
 
 // QUIZZ
 .quizz {
+    padding-bottom: 20px;
     margin-top: 50px;
     &__question {
         text-align: center;
@@ -251,6 +273,7 @@ header {
 
 // LEADER BOARD
 .leaderboard {
+    padding-bottom: 20px;
     &__header {
         text-align: center;
         h1 {
@@ -263,18 +286,33 @@ header {
         }
     }
     &__body {
-        h2,
-        h3 {
+        h2 {
             text-align: center;
+        }
+        .ant-card-head-title {
+            text-align: center;
+            color: #ffffff;
+        }
+        .ant-card-head {
+            background: $red;
+        }
+        ul {
+            list-style: none;
+        }
+        ul li {
+            text-align: center;
+        }
+        svg {
+            margin-right: 10px;
         }
     }
     .play-again {
         text-align: center;
         margin-top: 40px;
         a {
-            color: #ffffff;
+            color: $red;
             font-size: 25px;
-            background: $red;
+            border: 1px solid $red;
             padding: 10px 40px;
         }
     }

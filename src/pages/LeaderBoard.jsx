@@ -1,14 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TrophyOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { Row, Col, Card } from "antd";
 // CONTEXT
 import { DataContext } from "../Context";
 
+function sortScore(allScores) {
+    let scores = allScores;
+    scores.sort();
+    scores.sort(function (a, b) {
+        return a - b;
+    });
+    return scores;
+}
+
 function LeaderBoard() {
     const { score, allScore } = useContext(DataContext);
     const [presentScore, setPresentScore] = score;
     const [allScores, setAllScores] = allScore;
+    const [sortAllScores, setSortAllScores] = useState([]);
+
+    const restart = () => {
+        setPresentScore(0);
+    };
+
+    useEffect(() => {
+        setSortAllScores(sortScore(allScores).reverse());
+        console.log("sort");
+    });
+
     return (
         <div className="leaderboard">
             <div className="custom-container">
@@ -21,15 +41,22 @@ function LeaderBoard() {
                         <Col xs={24} md={12}>
                             <Card>
                                 <h2>Your Final score {presentScore}</h2>
-                                <Card>
-                                    <h3>Top 10 score</h3>
+                                <Card title="Top 10 score">
+                                    {sortAllScores.slice(0, 10).map((score) => (
+                                        <ul key={"" + Math.random()}>
+                                            <li>
+                                                <TrophyOutlined />
+                                                {score}
+                                            </li>
+                                        </ul>
+                                    ))}
                                 </Card>
                             </Card>
                         </Col>
                     </Row>
                 </div>
                 <div className="play-again">
-                    <Link onClick={() => setPresentScore(0)} to={"/quizz"}>
+                    <Link onClick={restart} to={"/quizz"}>
                         Play Again
                     </Link>
                 </div>

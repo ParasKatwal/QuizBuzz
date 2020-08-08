@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Modal, Button, Form, Input } from "antd";
-import { Link } from "react-router-dom";
 // CONTEXT
 import { DataContext } from "../Context";
 

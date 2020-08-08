@@ -6,6 +6,17 @@ import quizData from "../Data";
 // CONTEXT
 import { DataContext } from "../Context";
 
+function shuffleArray(quizData) {
+    let i = quizData.length - 1;
+    for (; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = quizData[i];
+        quizData[i] = quizData[j];
+        quizData[j] = temp;
+    }
+    return quizData;
+}
+
 function Quizz() {
     const { score, allScore } = useContext(DataContext);
     const [presentScore, setPresentScore] = score;
@@ -19,10 +30,16 @@ function Quizz() {
     const [selectAnswer, setSelectAnswer] = useState();
 
     useEffect(() => {
+        shuffleArray(quizData);
+    }, []);
+
+    useEffect(() => {
         setQuestion(quizData[currentIndex].question);
         setOptions(quizData[currentIndex].options);
         setAnswer(quizData[currentIndex].answer);
     }, [currentIndex]);
+
+    useEffect(() => {});
 
     const selectOption = (option) => {
         setSelectAnswer(option);
@@ -30,7 +47,7 @@ function Quizz() {
 
     const checkAnswer = () => {
         setProceedToNext(true);
-        if (answer == selectAnswer) {
+        if (answer === selectAnswer) {
             setPresentScore(presentScore + 1);
         }
     };
@@ -48,6 +65,7 @@ function Quizz() {
         setSelectAnswer();
         selectOption();
         setAllScorePresent([...allScorePresent, presentScore]);
+        console.log("stop");
     };
 
     return (
